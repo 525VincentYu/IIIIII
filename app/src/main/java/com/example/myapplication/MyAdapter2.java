@@ -40,6 +40,24 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
        holder.imageButton.setImageBitmap(db2ModelClass.getImage());
        holder.name.setText(db2ModelClass.getName());
        holder.discription.setText(db2ModelClass.getDiscription());
+       holder.imageButton2.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               String title1 = db2ModelClass.getName();
+               String context1 = db2ModelClass.getDiscription();
+
+               Intent share1 = new Intent(Intent.ACTION_SEND);
+
+               String extraText="This car type is"+title1+", besides its Model is"+context1;
+
+               share1.putExtra(Intent.EXTRA_TEXT, extraText);
+               share1.setType("text/plain");
+               context.startActivity(Intent.createChooser(share1,"SHARE"));
+
+
+           }
+       });
+
 
         holder.imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,9 +70,15 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
 
                 }
                 if (position == 1) {
+                    Intent intent = new Intent(context.getApplicationContext(),OrderdetailsActivity.class);
+
+                    context.startActivity(intent);
 
                                    }
                 if (position == 2) {
+                    Intent intent = new Intent(context.getApplicationContext(),OrderdetailsActivity.class);
+
+                    context.startActivity(intent);
 
                                     }
 
@@ -74,15 +98,17 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        ImageButton imageButton;
+        ImageButton imageButton,imageButton2;
         TextView name;
         TextView discription;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             imageButton = itemView.findViewById(R.id.image);
+            imageButton2 = itemView.findViewById(R.id.share);
             name = itemView.findViewById(R.id.trukname);
             discription = itemView.findViewById(R.id.discription);
+
         }
     }
 }

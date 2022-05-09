@@ -1,12 +1,14 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -37,6 +39,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
        holder.imageButton.setImageBitmap(db2ModelClass.getImage());
        holder.name.setText(db2ModelClass.getName());
        holder.discription.setText(db2ModelClass.getDiscription());
+       holder.imageButton2.setOnClickListener((view)-> {
+            {
+               String title1 = db2ModelClass.getName();
+               String context1 = db2ModelClass.getDiscription();
+
+               Intent share1 = new Intent(Intent.ACTION_SEND);
+
+               String extraText="This car type is"+title1+", besides its Model is"+context1;
+
+               share1.putExtra(Intent.EXTRA_TEXT, extraText);
+               share1.setType("text/plain");
+               context.startActivity(Intent.createChooser(share1,"SHARE"));
+           }
+
+       });
 
     }
 
@@ -46,13 +63,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        ImageButton imageButton;
+        ImageButton imageButton,imageButton2;
         TextView name;
         TextView discription;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             imageButton = itemView.findViewById(R.id.image);
+            imageButton2 = itemView.findViewById(R.id.share);
             name = itemView.findViewById(R.id.trukname);
             discription = itemView.findViewById(R.id.discription);
         }

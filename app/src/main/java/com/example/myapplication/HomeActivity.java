@@ -74,14 +74,6 @@ public class HomeActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myAdapter);
 
-
-
-        //recyclerView.setHasFixedSize(true);
-
-
-
-        //recyclerView.setAdapter(myAdapter);
-
         addOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
