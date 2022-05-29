@@ -2,8 +2,12 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,6 +16,8 @@ public class OrderdetailsActivity extends MyorderActivity {
     TextView sender,pick,receiver,drop,weight,width,height,length,quantity,type;
     Database3 DB;
     String username = "Ning";
+    Button estimate;
+    int position;
 
 
 
@@ -20,6 +26,13 @@ public class OrderdetailsActivity extends MyorderActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orderdetails);
         DB = new Database3(this);
+
+        //int position = 10;
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            position = extras.getInt("key");
+        }
+
 
 
 
@@ -36,17 +49,28 @@ public class OrderdetailsActivity extends MyorderActivity {
         length = findViewById(R.id.length1);
         quantity = findViewById(R.id.quantity);
         type = findViewById(R.id.type1);
-        String cursor0 = DB.getimageid(username);
-        String cursor1 = DB.getsender(username);
-        String cursor2 = DB.getpicktime(username);
-        String cursor3 = DB.getreciver(username);
-        String cursor4 = DB.getweight(username);
-        String cursor5 = DB.gettype(username);
-        String cursor6 = DB.getwidth(username);
-        String cursor7 = DB.getheight(username);
-        String cursor8 = DB.getlength("Ning");
+        estimate = findViewById(R.id.estimate);
+        estimate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MmapsActivity.class);
+                intent.putExtra("key",position);
+                startActivity(intent);
 
-        imageView.setImageResource(R.drawable.a);
+            }
+        });
+
+        Bitmap cursor0 = DB.getimage(position);
+        String cursor1 = DB.getsender(position);
+        String cursor2 = DB.getpicktime(position);
+        String cursor3 = DB.getreciver(position);
+        String cursor4 = DB.getweight(position);
+        String cursor5 = DB.gettype(position);
+        String cursor6 = DB.getwidth(position);
+        String cursor7 = DB.getheight(position);
+        String cursor8 = DB.getlength(position);
+
+        imageView.setImageBitmap(cursor0);
 
 
 

@@ -13,24 +13,22 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class Database2 extends SQLiteOpenHelper {
+public class Database4 extends SQLiteOpenHelper {
     Context context;
-    public Database2(Context context) {
-        super(context, "truck.db", null, 1);
+    public Database4(Context context) {
+        super(context, "myorder.db", null, 1);
         this.context =context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table if not exists truck (image blob, name text, discription text);");
-        //db.execSQL("create table if not exists myorder (image blob, name text, discription text);");
+        db.execSQL("create table if not exists myorder (image blob, name text, discription text);");
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("drop table if exists truck");
-       // db.execSQL("drop table if exists myorder");
+        db.execSQL("drop table if exists myorder");
 
     }
 
@@ -50,40 +48,33 @@ public class Database2 extends SQLiteOpenHelper {
             return true;
     }
 
-
-
-
-
-
-
-
-    public ArrayList<Db2ModelClass> getAlldata()
+    public ArrayList<Db2ModelClass> getAlldata1()
     {
         try {
             ArrayList<Db2ModelClass>db2ModelClassArrayList = new ArrayList<>();
             SQLiteDatabase sqLiteDatabase = getReadableDatabase();
             if(sqLiteDatabase!=null){
-            Cursor cursor = sqLiteDatabase.rawQuery("select * from truck",null);
-            if(cursor.getCount()!=0){
-                while(cursor.moveToNext()){
-                    String name = cursor.getString(1);
-                    String discription = cursor.getString(2);
-                    byte[] image = cursor.getBlob(0);
-                    Bitmap imag = BitmapFactory.decodeByteArray(image, 0,image.length);
-                    db2ModelClassArrayList.add(
-                            new Db2ModelClass(
-                                    imag,name,discription
-                            )
-                    );
+                Cursor cursor = sqLiteDatabase.rawQuery("select * from myorder",null);
+                if(cursor.getCount()!=0){
+                    while(cursor.moveToNext()){
+                        String name = cursor.getString(1);
+                        String discription = cursor.getString(2);
+                        byte[] image = cursor.getBlob(0);
+                        Bitmap imag = BitmapFactory.decodeByteArray(image, 0,image.length);
+                        db2ModelClassArrayList.add(
+                                new Db2ModelClass(
+                                        imag,name,discription
+                                )
+                        );
+
+                    }
+                    return db2ModelClassArrayList;
 
                 }
-                return db2ModelClassArrayList;
-
-            }
-            else {
-                Toast.makeText(context, "No data is ", Toast.LENGTH_SHORT).show();
-                return null;
-            }
+                else {
+                    Toast.makeText(context, "No data is ", Toast.LENGTH_SHORT).show();
+                    return null;
+                }
             }
             else {
                 Toast.makeText(context, "Data is null", Toast.LENGTH_SHORT).show();
@@ -96,4 +87,5 @@ public class Database2 extends SQLiteOpenHelper {
             return null;
         }
     }
+
 }

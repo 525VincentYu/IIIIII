@@ -7,6 +7,34 @@
     tools:context=".MainActivity">
 
 
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="207dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
+        android:text="Drop-off location:"
+        android:textAlignment="viewStart"
+        android:textColor="#040303"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <EditText
+        android:id="@+id/dropofflocation"
+        android:layout_width="169dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAlignment="viewStart"
+        android:textColor="#020202"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pickuptime" />
+
     <EditText
         android:id="@+id/pickuplocation"
         android:layout_width="169dp"
@@ -132,9 +160,9 @@
         android:layout_width="244dp"
         android:layout_height="72dp"
         android:layout_marginEnd="80dp"
-        android:layout_marginBottom="76dp"
-        android:text="Next"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/button_border"
+        android:text="Next"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

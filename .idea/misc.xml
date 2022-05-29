@@ -19,16 +19,19 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2609375" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2609375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12291666666666666" />
+        <entry key="app/src/main/res/layout/activity_map.xml" value="0.2598958333333333" />
+        <entry key="app/src/main/res/layout/activity_maps.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/layout/activity_myorder.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/layout/activity_myorder2.xml" value="0.14114583333333333" />
         <entry key="app/src/main/res/layout/activity_neworder.xml" value="0.23392888857936803" />
         <entry key="app/src/main/res/layout/activity_neworder2.xml" value="0.18869425455729166" />
-        <entry key="app/src/main/res/layout/activity_orderdetails.xml" value="0.16249593098958331" />
+        <entry key="app/src/main/res/layout/activity_orderdetails.xml" value="0.2416859944661458" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.2609375" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_blank1.xml" value="0.12239583333333333" />
         <entry key="app/src/main/res/layout/itemtruck.xml" value="0.280679931640625" />
         <entry key="app/src/main/res/layout/menufragment.xml" value="0.2609375" />
+        <entry key="app/src/main/res/layout/s.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/menu/popup_menu.xml" value="0.2609375" />
       </map>
     </option>
